@@ -10,9 +10,9 @@ BrainKick is a quick-and-easy dueling style party game which runs on a variety o
 Visit:
 https://henkehagfeldt.github.io/brainkick-flutter/
 
-![BrainKick Homescreen](../.github/assets/brainkick_homescreen.png)
-![Lightning Card](../.github/assets/brainkick_lightning_chosen.png)
-![Lightning Question](../.github/assets/brainkick_lightning_prompt.png)
+![BrainKick Homescreen](.github/assets/brainkick_homescreen.png)
+![Lightning Card](.github/assets/brainkick_lightning_chosen.png)
+![Lightning Question](.github/assets/brainkick_lightning_prompt.png)
 
 
 
