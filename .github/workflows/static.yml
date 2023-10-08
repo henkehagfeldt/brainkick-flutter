@@ -22,22 +22,38 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Flutter SDK
+      uses: subosito/flutter-action@v2
+      
+    - name: Flutter Build Web
+      run: flutter build web
+
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: https://henkehagfeldt.github.io/brainkick-flutter/
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
           path: 'brainkick/build/web'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
