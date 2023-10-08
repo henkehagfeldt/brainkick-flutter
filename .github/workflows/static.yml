@@ -34,6 +34,7 @@ jobs:
       
     - name: Flutter Build Web
       run: flutter build web
+      working-directory: ./brainkick
 
   deploy:
     needs: build
