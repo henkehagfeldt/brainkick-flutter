@@ -6,6 +6,10 @@ BrainKick is a quick-and-easy dueling style party game which runs on a variety o
 ***Complexity:** 1/5*\
 ***Time:** However long you want*
 
+![BrainKick Homescreen](readme_assets/brainkick_homescreen.png)
+![Lightning Card](readme_assets/brainkick_lightning_chosen.png)
+![Lightning Question](readme_assets/brainkick_lightning_prompt.png)
+
 ## Rules
 
 The rules are quite simple and can be broken down into X steps.
