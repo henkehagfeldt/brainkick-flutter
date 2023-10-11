@@ -29,7 +29,7 @@ class BrainKickApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(0, 255, 122, 122)),
         ),
         home: Scaffold(
-          backgroundColor: Color.fromARGB(255, 66, 66, 66),
+          backgroundColor: Color.fromARGB(255, 255, 0, 0),
           body: GameScreen(),
         )
       ),
