@@ -77,7 +77,7 @@ class MainState extends ChangeNotifier {
 
     loadedData = loadedData.toUpperCase();
     List<String> listData = loadedData.split("\n");
-    listData.shuffle();
+    //listData.shuffle();
     cardModel.setPromptData(listData);
     notifyListeners();
   }

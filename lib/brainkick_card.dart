@@ -94,13 +94,13 @@ class _BrainKickCardState extends State<BrainKickCard> {
                         children: [
                           Spacer(flex: 1,),
                           Expanded(
-                            flex: 8,
+                            flex: 10,
                             child: AutoSizeText(
                               maxLines: 5,
                               textAlign: TextAlign.center,
-                              overflow: TextOverflow.visible,
+                              overflow: TextOverflow.ellipsis,
                               wrapWords: false,
-                              maxFontSize: 50,
+                              maxFontSize: 60,
                               style: TextStyle(
                                 fontFamily: 'StudentsTeacher'),
                               cardData.getNextPrompt(),
