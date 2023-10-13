@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'package:application/models/cardModel.dart';
+import 'package:application/models/card_model.dart';
 import 'package:provider/provider.dart';
 import 'package:application/main.dart';
 import 'package:flutter/material.dart';
 import 'package:application/enums/card_state.dart';
 import 'package:application/enums/card_type.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class BrainKickCard extends StatefulWidget {
   BrainKickCard({required this.cardType});
@@ -84,17 +85,33 @@ class _BrainKickCardState extends State<BrainKickCard> {
               transform: Matrix4.identity()
                 ..rotateY(3.14),
               child: Center(
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Text(
-                    maxLines: 10,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontFamily: 'StudentsTeacher',
-                      fontSize: 28),
-                    cardData.getNextPrompt(),
-                  ),
+                child: Column(
+                  children: [
+                    Spacer(flex: 1,),
+                    Expanded(
+                      flex: 5,
+                      child: Row(
+                        children: [
+                          Spacer(flex: 1,),
+                          Expanded(
+                            flex: 10,
+                            child: AutoSizeText(
+                              maxLines: 5,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              wrapWords: false,
+                              maxFontSize: 60,
+                              style: TextStyle(
+                                fontFamily: 'StudentsTeacher'),
+                              cardData.getNextPrompt(),
+                            ),
+                          ),
+                          Spacer(flex: 1)
+                        ],
+                      ),
+                    ),
+                  Spacer(flex: 1,)
+                  ],
                 )
               ),
             )

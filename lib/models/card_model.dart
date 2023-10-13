@@ -1,4 +1,3 @@
-import 'package:application/brainkick_card.dart';
 import 'package:flutter/material.dart';
 import 'package:application/enums/card_state.dart';
 import 'package:application/enums/card_type.dart';
