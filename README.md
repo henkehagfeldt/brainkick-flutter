@@ -109,7 +109,7 @@ The lightning challenge will present the two players with an quick and easy ques
 You win by answering the question correctly before your opponent. In case of a tie, pull another lightning card.
 
 **Example**\
-*Question: What is Queen Elizabeths first name?*
+*Question: What is Queen Elizabeth's first name?*
 
 *Player 2*\
 Elizabeth!

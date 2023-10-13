@@ -1,5 +1,5 @@
 import 'package:application/enums/card_state.dart';
-import 'package:application/models/cardModel.dart';
+import 'package:application/models/card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:application/brainkick_card.dart';
@@ -8,6 +8,7 @@ import 'package:application/enums/card_type.dart';
 
 void main() {
   runApp(BrainKickApp());
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 class BrainKickApp extends StatelessWidget {
