@@ -77,7 +77,7 @@ class MainState extends ChangeNotifier {
 
     loadedData = loadedData.toUpperCase();
     List<String> listData = loadedData.split("\n");
-    //listData.shuffle();
+    listData.shuffle();
     cardModel.setPromptData(listData);
     notifyListeners();
   }
@@ -158,16 +158,6 @@ class _GameScreenState extends State<GameScreen> {
 
     return Consumer<MainState>(
       builder: (context, state, child) {
-
-      /*
-      print("In Main Fire State: ${state.cardModelMap[CardType.fire]!.getState()}");
-      print("Fire: ${state.isHighlighted(CardType.fire)}");
-      print("Fire Show: ${state.isShowing(CardType.fire)}");
-      print("PingPong: ${state.isHighlighted(CardType.pingpong)}");
-      print("PingPong Show: ${state.isShowing(CardType.pingpong)}");
-      print("Lightning: ${state.isHighlighted(CardType.lightning)}");
-      print("Lightning Show: ${state.isShowing(CardType.lightning)}");
-      */
 
       return Row(
         children: [

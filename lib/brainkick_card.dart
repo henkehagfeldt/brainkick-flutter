@@ -26,6 +26,15 @@ class _BrainKickCardState extends State<BrainKickCard> {
   int rotateImageInDurationMs = 200;
   int rotationDurationMs = 600;
 
+  String currentCardPrompt = "";
+
+  @override
+  void initState() {
+    super.initState();
+    final mainState = Provider.of<MainState>(context, listen: false);
+    mainState.initialize(context);
+  }
+
   void triggerCard(MainState mainState) {
     mainState.transitionState(widget.cardType);
     CardModel cardData = mainState.getCard(widget.cardType);
@@ -33,6 +42,7 @@ class _BrainKickCardState extends State<BrainKickCard> {
     if(cardData.getState() == CardState.displayPrompt) {
       rotationDurationMs = rotateTextInDurationMs;
       startRotationToText();
+      currentCardPrompt = cardData.getNextPrompt().trim();
     } else if(cardData.getState() == CardState.choosingCard) {
       rotationDurationMs = rotateImageInDurationMs;
       startRotationToImage();
@@ -64,65 +74,60 @@ class _BrainKickCardState extends State<BrainKickCard> {
 
   @override
   Widget build(BuildContext context) {
+      double width = MediaQuery.of(context).size.width;
+      double height = MediaQuery.of(context).size.height;
       final mainState = Provider.of<MainState>(context);
       CardModel cardData = mainState.getCard(widget.cardType);
-      mainState.initialize(context);
       return GestureDetector(
-        onTap: () => {triggerCard(mainState)},
-        child: AspectRatio(
-          aspectRatio: 2 / 3,
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: rotationDurationMs),
-            transformAlignment: Alignment.center,
-            transform: Matrix4.identity()
-            ..rotateY(yRotationValue),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: _showingText ? Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..rotateY(3.14),
-              child: Center(
-                child: Column(
-                  children: [
-                    Spacer(flex: 1,),
-                    Expanded(
-                      flex: 5,
-                      child: Row(
-                        children: [
-                          Spacer(flex: 1,),
-                          Expanded(
-                            flex: 10,
-                            child: AutoSizeText(
-                              maxLines: 5,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              wrapWords: false,
-                              maxFontSize: 60,
-                              style: TextStyle(
-                                fontFamily: 'StudentsTeacher'),
-                              cardData.getNextPrompt(),
-                            ),
-                          ),
-                          Spacer(flex: 1)
-                        ],
-                      ),
-                    ),
-                  Spacer(flex: 1,)
-                  ],
-                )
-              ),
-            )
-            : Center(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: cardData.getImage(),
-              )
-            ),
+        onTap: () {
+          print("OnTAP");
+          triggerCard(mainState);},
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: height * 0.7
           ),
+          child: AspectRatio(
+            aspectRatio: 2 / 3,
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: rotationDurationMs),
+              transformAlignment: Alignment.center,
+              transform: Matrix4.identity()
+              ..rotateY(yRotationValue),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: _showingText ? 
+                Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()
+                    ..rotateY(3.14),
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: AutoSizeText(
+                        maxLines: 5,
+                        minFontSize: (width/50).ceilToDouble(),
+                        maxFontSize: (width/30).ceilToDouble(),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'StudentsTeacher'),
+                        currentCardPrompt,
+                      )
+                    ),
+                  ),
+                )
+                : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: cardData.getImage(),
+                  )
+                ),
+              ),
+            ),
         ),
-      );
+        );
   }
 }
