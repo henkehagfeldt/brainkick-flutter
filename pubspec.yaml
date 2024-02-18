@@ -1,5 +1,5 @@
-name: application
-description: A new Flutter project.
+name: brainkick
+description: A duel-style party game.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   auto_size_text: ^3.0.0
-
+  event_bus: ^2.0.0
   english_words: ^4.0.0
   provider: ^6.0.0
 
@@ -25,12 +25,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/lightning.png
-    - assets/images/pingpong.png 
-    - assets/images/fire.png 
-    - assets/text/fire.txt
-    - assets/text/pingpong.txt
-    - assets/text/lightning.txt
+    - assets/images/cards/
+    - assets/packs/pack_1/
+    - assets/packs/pack_2/
+    - assets/packs/pack_3/
   fonts:
     - family: StudentsTeacher
       fonts:

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:application/enums/card_state.dart';
-import 'package:application/enums/card_type.dart';
+import 'package:brainkick/enums/card_state.dart';
+import 'package:brainkick/enums/card_type.dart';
 
 class CardModel {
   late List<String> _prompts;
   late CardType _type;
-  CardState _state = CardState.choosingCard;
+  CardState _state = CardState.idle;
   int _promptIndex = 0;
   
   CardModel(CardType type) {
     _type = type;
-    _state = CardState.choosingCard;
+    _state = CardState.idle;
   }
 
   String getNextPrompt() {
@@ -36,7 +36,7 @@ class CardModel {
   }
 
   Image getImage() {
-    return Image.asset('assets/images/${_type.value}.png');
+    return Image.asset('assets/images/cards/${_type.value}.png');
   }
   
   String getTypeAsString() {
@@ -45,6 +45,18 @@ class CardModel {
 
   bool isHidden() {
     return _state == CardState.hiding;
+  }
+
+  bool isHighlighted() {
+    return _state == CardState.highlightCard;
+  }
+
+  bool isShowingText() {
+    return _state == CardState.displayPrompt;
+  }
+
+  bool isIdle() {
+    return _state == CardState.idle;
   }
 
   

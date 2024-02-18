@@ -1,5 +1,5 @@
 enum CardState {
-  choosingCard,
+  idle,
   highlightCard,
   displayPrompt,
   hiding
