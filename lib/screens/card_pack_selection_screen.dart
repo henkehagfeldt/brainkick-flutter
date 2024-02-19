@@ -15,15 +15,15 @@ class CardPackSelectionScreen extends StatelessWidget {
           Spacer(
             flex: 6,
           ),
-          CardPack(packId: 'pack_1'),
+          CardPack(packId: 'pack_1', packTitle: 'Pack 1'),
           Spacer(
             flex: 6,
           ),
-          CardPack(packId: 'pack_2'),
+          CardPack(packId: 'pack_2', packTitle: 'Pack 2'),
           Spacer(
             flex: 6,
           ),
-          CardPack(packId: 'pack_3'),
+          CardPack(packId: 'pack_3', packTitle: 'Pack 3'),
           Spacer(
             flex: 6,
           ),

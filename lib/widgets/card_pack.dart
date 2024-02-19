@@ -7,15 +7,17 @@ import 'package:provider/provider.dart';
 class CardPack extends StatelessWidget {
   const CardPack({
     super.key,
-    required this.packId
+    required this.packId,
+    required this.packTitle
   });
 
   final String packId;
+  final String packTitle;
 
   triggerCard(BuildContext context) {
     
     // Navigate to the HomeScreen
-    Navigator.pushReplacement(
+    Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ChangeNotifierProvider(
@@ -43,13 +45,32 @@ class CardPack extends StatelessWidget {
           maxHeight: height * 0.4
         ),
         child: AspectRatio(
-          aspectRatio: 1,
+          aspectRatio: 12/9,
           child: Container(
             decoration: BoxDecoration(
+              image: DecorationImage(
+                alignment: Alignment.topCenter,
+                image: AssetImage('assets/packs/$packId/cover.png')),
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5), // Shadow color with opacity
+                  spreadRadius: 3, // Extend the shadow to all sides by the specified radius
+                  blurRadius: 10, // Blur radius for the shadow
+                  offset: Offset(10, 10), // Horizontal and vertical offset of the shadow
+                ),
+              ],
             ),
-            child: CardImage(cardImage: Image.asset('assets/packs/$packId/cover.png')),
+            
+            child: Column(children: [
+              Spacer(flex: 4),
+              Expanded(flex: 1, child: Text(
+                style: TextStyle(
+                  fontSize: 25, 
+                  fontFamily: 'AlteHaasGrotesk'), 
+                packTitle))
+            ]),
           ),
         ),
       ),

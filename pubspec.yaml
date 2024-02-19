@@ -26,6 +26,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/cards/
+    - assets/images/home.png
     - assets/packs/pack_1/
     - assets/packs/pack_2/
     - assets/packs/pack_3/
@@ -33,3 +34,7 @@ flutter:
     - family: StudentsTeacher
       fonts:
         - asset: assets/fonts/TheStudentsTeacher-Regular.ttf
+    - family: AlteHaasGrotesk
+      fonts:
+        - asset: assets/fonts/AlteHaasGroteskRegular.ttf
+        - asset: assets/fonts/AlteHaasGroteskBold.ttf
